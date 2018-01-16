@@ -20,21 +20,9 @@
   <body>
     <div class="container">
       <div ng-controller="mainController">
-  <form name="myForm">
-    <label> Enter text: <input type="email" ng-model="field"
-  name="myField" required maxlength="15" /> </label>
-  <div
-  ng-messages="myForm.myField.$error" role="alert"> <div
-  ng-message="required">Please enter a value for this field.</div> <div
-  ng-message="email">This field must be a valid email address.</div> <div
-  ng-message="maxlength">This field can be at most 15 characters long.</div>
-  </div>
-</form>
-
-<h1>Hello World!</h1> </div>
 
       <div class="col-md-12">
-        <h1 ng-bennett="Hello there Bennett">Hello there Bennett</h1>
+        <h1 ng-bennett="Hello there Bennett">Hello {{name}}</h1>
       </div>
 
       </div>
