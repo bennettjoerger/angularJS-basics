@@ -12,14 +12,25 @@ myApp.controller('mainController', ['$scope','$filter', function($scope, $filter
 
   $scope.characters = 5;
 
-  var rulesRequest = new XLMHttpRequest();
-  rulesRequest.onreadystatechange = function(){
-    if(rulesRequest.readyState == 4 && rulesRequest.status == 200) {
-      $scope.rules = JSON.parse(rulesRequest.responseText);
-    }
+  $scope.newRule = '';
+
+  $scope.addRule = function(){
+    $http.post('addressOfApi', {newRule: $scope.newRule})
+      .success(function(result){
+        $scope.rules = result;
+        $scope.newRule = '';
+      })
+      error(function (data, status){
+        console.log(data);
+      })
   }
 
-  rulesRequest.open("GET", "http://localhost:", true);
-  rulesRequest.send();
-  
+  $http.get('addressOfApi')
+    .success(function(result){
+      $scope.rules = result;
+    })
+
+    .error(function(data, status){
+      console.log(data);
+    })
 }]);
