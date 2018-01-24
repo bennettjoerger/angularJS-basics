@@ -1,37 +1,32 @@
-//Http Service using the $http Angular Service. 
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['ngRoute']);
 
 
+myApp.config(function($routeProvider){
 
-myApp.controller('mainController', ['$scope','$filter', function($scope, $filter){
+  $routeProvider
 
-  $scope.name = "";
+  .when('/', {
+    templateUrl: 'pages/main.html',
+    controller: 'mainController'
+  })
+  .when('/second', {
+    templateUrl: 'pages/second.html',
+    controller: 'secondController'
+  })
+  .when('/second/:num', {
+    templateUrl: 'pages/second.html',
+    controller: 'secondController'
+  })
+});
 
-  $scope.lowercasehandle = function(){
-    return $filter('lowercase')($scope.name);
-  };
+myApp.controller('mainController', ['$scope', '$log', '$routeParams', function($scope, $log, $routeParams){
 
-  $scope.characters = 5;
 
-  $scope.newRule = '';
+}]);
 
-  $scope.addRule = function(){
-    $http.post('addressOfApi', {newRule: $scope.newRule})
-      .success(function(result){
-        $scope.rules = result;
-        $scope.newRule = '';
-      })
-      error(function (data, status){
-        console.log(data);
-      })
-  }
+myApp.controller('secondController', ['$scope', '$log', '$routeParams', function($scope, $log, $routeParams){
 
-  $http.get('addressOfApi')
-    .success(function(result){
-      $scope.rules = result;
-    })
+  $scope.num = $routeParams.num || 1;
 
-    .error(function(data, status){
-      console.log(data);
-    })
+
 }]);

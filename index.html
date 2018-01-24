@@ -5,45 +5,41 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
     <script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
-    <!-- <script src="https://code.angularjs.org/1.6.7/angular-messages.min.js"></script> -->
-    <script src="https://code.angularjs.org/1.6.7/angular-resource.min.js">
 
+    <script src="https://code.angularjs.org/1.6.7/angular-route.min.js">
     </script>
     <script src= "app.js"></script>
 
   </head>
   <body>
+  <header>
+    <nav class="navbar navbar-default">
     <div class="container">
-      <div ng-controller="mainController">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">AngularJS</a>
+    </div>
 
-        <label>What is your twitter handle?</label>
-        <input type="text" ng-model="name"/>
-        <!-- <div class="alert" ng-if="name.length !== characters"> -->
-          <div class="alert" ng-class="{ 'alert-warning': name.length < characters, 'alert-danger': name.length > characters}" ng-show="name.length !== characters">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/">Home</a></li>
 
-            <div ng-show="name.length < characters">
-              You need more than five characters
-            </div>
-            <div ng-show="name.length > characters">
-              You need less than five characters
-            </div>
-          </div>
-          <div class="example-animate-container" ng-repeat="rule in rules">{{rule.rulename}}
-        </div>
-        Add rule:<input type="text" ng-model="newRule"><a href="#" class="btn btn-default" ng-click="addRule()">Add</a>
+      <li><a href="#!second">Second</a></li>
+    
+    </ul>
+  </div>
+  </nav>
+  </header>
 
-        <hr/>
-        <h1>twitter.com/{{lowercasehandle()}}</h1>
-      </div>
+  <div ng-view></div>
+
+    </body>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  </body>
 </html>
